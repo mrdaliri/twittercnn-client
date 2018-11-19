@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Tweet } from '../tweet';
-import { ContentService } from '../content.service';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Tweet} from '../tweet';
+import {ContentService} from '../content.service';
 import {Article} from '../article';
+import {forkJoin} from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -14,17 +15,18 @@ export class ContentComponent implements OnInit, OnDestroy {
   @Input() username: string;
   @Input() keyword: string;
   count = 25;
+
+  content: (Tweet | Article)[] = [];
   timer;
 
-  constructor(private api: ContentService) {}
+  constructor(private api: ContentService) {
+  }
 
   ngOnInit() {
-    // this.getTweets();
-    this.getNews();
+    this.update();
     this.timer = setInterval(() => {
-      this.getTweets();
-      this.getNews();
-    }, 61000);
+      this.update();
+    }, 60 * 1000);
   }
 
   ngOnDestroy() {
@@ -33,15 +35,22 @@ export class ContentComponent implements OnInit, OnDestroy {
     }
   }
 
-  getTweets() {
-    this.api.tweets(this.username, this.count).subscribe(tweets => {
-      this.tweets = tweets;
-    });
+  update() {
+    forkJoin([
+      this.api.tweets(this.username, this.count),
+      this.api.news(this.keyword, this.count)
+    ])
+      .subscribe(result => {
+        let merged: (Tweet | Article)[] = [...result[0], ...result[1]];
+        merged.sort(function (a, b) {
+          return b.datetime - a.datetime;
+        });
+
+        this.content = merged;
+      });
   }
 
-  getNews() {
-    this.api.news(this.keyword, this.count).subscribe(news => {
-      this.news = news;
-    });
+  isTweet(c): boolean {
+    return c.hasOwnProperty('id');
   }
 }

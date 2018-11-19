@@ -15,4 +15,5 @@ export class Article {
   short: string;
   thumbnail: string;
   language: string;
+  datetime: number;
 }

@@ -1,36 +1,30 @@
-<div class="card-header">
-  Donald J. Trump
-  <span *ngIf="tweet.retweeted_status">retweeted</span>
-  <span *ngIf="!tweet.retweeted_status">said</span>:
-</div>
-<div class="card-img" *ngIf="hasPhoto(tweet)">
-  <img [src]="tweet.entities?.media[0].media_url_https" (click)="media = true" />
-</div>
-<div class="card-block">
-  <div class="card-media-block wrap">
-    <img [src]="emotionToImage(tweet)" class="card-media-image">
-    <strong class="card-media-title">{{ findEmotion(tweet).tone_name }}</strong>
+<div class="card">
+  <div class="card-header">
+    Donald J. Trump
+    <span *ngIf="tweet.retweeted_status">retweeted</span>
+    <span *ngIf="!tweet.retweeted_status">said</span>:
   </div>
-  <div class="card-content">
-    <p class="card-text" [innerHTML]="(tweet.retweeted_status ? tweet.retweeted_status : tweet) | tweet"></p>
-    <blockquote *ngIf="tweet.quoted_status" [innerHTML]="tweet.quoted_status | tweet"></blockquote>
+  <div class="card-img" *ngIf="hasPhoto(tweet)">
+    <img [src]="tweet.entities?.media[0].media_url_https" (click)="media = true"/>
   </div>
-</div>
-<div class="card-footer" *ngIf="!retweet">
+  <div class="card-block">
+    <div class="card-media-block wrap">
+      <img [src]="emotionToImage(tweet)" class="card-media-image">
+      <strong class="card-media-title">{{ findEmotion(tweet).tone_name }}</strong>
+    </div>
+    <div class="card-content">
+      <p class="card-text" [innerHTML]="(tweet.retweeted_status ? tweet.retweeted_status : tweet) | tweet"></p>
+      <blockquote *ngIf="tweet.quoted_status" [innerHTML]="tweet.quoted_status | tweet"></blockquote>
+    </div>
+  </div>
+  <div class="card-footer" *ngIf="!retweet">
     {{tweet.created_at | amLocal | amTimeAgo}}
     <clr-icon shape="minus"></clr-icon>
     {{tweet.created_at | amLocal | date:'medium'}}
-</div>
-<div class="card-footer" *ngIf="retweet">
+  </div>
+  <div class="card-footer" *ngIf="retweet">
     {{retweet.created_at | amLocal | amTimeAgo}}
     <clr-icon shape="minus"></clr-icon>
     {{retweet.created_at | amLocal | date:'medium'}}
+  </div>
 </div>
-<clr-modal [(clrModalOpen)]="media" *ngIf="tweet.entities.media" clrModalSize="lg">
-  <h3 class="modal-title"><img [src]="tweet.user.profile_image_url_https" class="avatar" /> {{tweet.user.name}} (@{{tweet.user.screen_name}})
-    <span *ngIf="retweet" class="retweeted"><clr-icon shape="sync"></clr-icon> Retweeted by {{retweet.user.name}}</span></h3>
-    <div class="modal-body">
-      <img [src]="tweet.entities?.media[0].media_url_https" />
-    </div>
-    <div class="modal-footer" [innerHTML]="tweet | tweet"></div>
-</clr-modal>

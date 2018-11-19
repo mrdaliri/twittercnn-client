@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges} from '@angular/core';
 import {Tweet} from '../tweet';
 import {ContentService} from '../content.service';
 import {Article} from '../article';
@@ -9,15 +9,15 @@ import {forkJoin} from 'rxjs';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit, OnDestroy {
-  tweets: Tweet[] = [];
-  news: Article[] = [];
+export class ContentComponent implements OnInit, OnDestroy, OnChanges {
   @Input() username: string;
   @Input() keyword: string;
   count = 25;
 
   content: (Tweet | Article)[] = [];
   timer;
+
+  changed = false;
 
   constructor(private api: ContentService) {
   }
@@ -47,10 +47,16 @@ export class ContentComponent implements OnInit, OnDestroy {
         });
 
         this.content = merged;
+
+        this.changed = false;
       });
   }
 
   isTweet(c): boolean {
     return c.hasOwnProperty('id');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.changed = true;
   }
 }

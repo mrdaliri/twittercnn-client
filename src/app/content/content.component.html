@@ -1,4 +1,14 @@
-<div class="tweets clr-col-md-8 clr-offset-2">
+<div class="clr-col-md-8 clr-offset-md-2">
+  <div *ngIf="changed" class="alert alert-info" role="alert">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        <span class="alert-text">Search criteria updated, wait a little for fetching new data.</span>
+      </div>
+    </div>
+  </div>
   <div *ngFor="let c of content; let i = index">
     <app-tweet [tweet]="c" *ngIf="isTweet(c)"></app-tweet>
     <app-article [article]="c" *ngIf="!isTweet(c)"></app-article>

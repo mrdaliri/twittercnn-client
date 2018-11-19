@@ -13,7 +13,7 @@ export class TweetComponent {
 
   hasPhoto(tweet: Tweet) {
     if (tweet.entities.media
-        && tweet.entities.media.length 
+        && tweet.entities.media.length
         && tweet.entities.media[0].type === 'photo') {
       return true;
     }
@@ -23,4 +23,9 @@ export class TweetComponent {
   toggleAction(property: 'favorite'|'retweet') {
     this.action.emit({property, tweet: this.tweet});
   }
+
+  getTrumpSticker() {
+    return 'http://localhost:9001/' + (Math.random() * (4 - 1) + 1) + '.png';
+  }
+
 }

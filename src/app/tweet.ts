@@ -1,3 +1,5 @@
+import { Tone } from './tone';
+
 export class Tweet {
   created_at: string;
   id: number;
@@ -61,5 +63,8 @@ export class Tweet {
   favorited: boolean;
   retweeted: boolean;
   lang: string;
-  retweet_status: Tweet;
+  retweeted_status: Tweet;
+  is_quote_status: boolean;
+  quoted_status: Tweet;
+  tones: Tone[];
 }

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { TwitterService } from './twitter.service';
+import { ContentService } from './content.service';
 
 describe('TwitterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TwitterService]
+      providers: [ContentService]
     });
   });
 
-  it('should be created', inject([TwitterService], (service: TwitterService) => {
+  it('should be created', inject([ContentService], (service: ContentService) => {
     expect(service).toBeTruthy();
   }));
 });

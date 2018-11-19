@@ -1,6 +1,5 @@
 <div class="tweets clr-col-md-8 clr-offset-2">
   <div class="card" *ngFor="let tweet of tweets; let i = index">
-    <app-tweet *ngIf="tweet.retweeted_status" [tweet]="tweet.retweeted_status" [retweet]="tweet" (action)="action($event, i)"></app-tweet>
-    <app-tweet *ngIf="!tweet.retweeted_status" [tweet]="tweet" (action)="action($event, i)"></app-tweet>
+    <app-tweet [tweet]="tweet"></app-tweet>
   </div>
 </div>

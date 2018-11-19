@@ -1,19 +1,16 @@
 import { Component , OnInit} from '@angular/core';
-import { TwitterService } from './twitter.service';
+import { ContentService } from './content.service';
 import { Tweet } from './tweet';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [TwitterService]
+  providers: [ContentService]
 })
-export class AppComponent implements OnInit {
-  user;
+export class AppComponent {
+  username = 'realDonaldTrump';
 
-  constructor(private twitter: TwitterService) {}
+  constructor(private api: ContentService) {}
 
-  ngOnInit() {
-    this.twitter.user().subscribe(user => this.user = user.data);
-  }
 }

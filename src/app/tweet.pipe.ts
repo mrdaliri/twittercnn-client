@@ -25,7 +25,7 @@ export class TweetPipe implements PipeTransform {
         text = text.replace(url.url, `<a href="${url.url}" target="_blank">${url.display_url}</a>`);
       });
     }
-    
+
     // Remove media urls since we display them
     if (tweet.entities.media) {
       tweet.entities.media.forEach(url => {

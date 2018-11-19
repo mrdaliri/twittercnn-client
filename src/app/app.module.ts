@@ -7,15 +7,17 @@ import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { TweetComponent } from './tweet/tweet.component';
-import { TweetsComponent } from './tweets/tweets.component';
+import { ContentComponent } from './content/content.component';
 import { TweetPipe } from './tweet.pipe';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TweetComponent,
-    TweetsComponent,
+    ContentComponent,
     TweetPipe,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,

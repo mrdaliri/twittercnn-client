@@ -1,6 +1,6 @@
 import { TweetPipe } from './tweet.pipe';
 import { DomSanitizer } from '@angular/platform-browser';
-const tweets = require('../assets/tweets.spec.json');
+const tweets = require('../assets/content.spec.json');
 
 class Sanitizer {
   bypassSecurityTrustHtml(text) {

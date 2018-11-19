@@ -10,7 +10,8 @@ import { Tweet } from './tweet';
 })
 export class AppComponent {
   username = 'realDonaldTrump';
+  keyword = 'Trump';
 
-  constructor(private api: ContentService) {}
+  constructor() {}
 
 }

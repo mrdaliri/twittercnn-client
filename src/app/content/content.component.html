@@ -1,0 +1,8 @@
+<div class="tweets clr-col-md-8 clr-offset-2">
+  <!--<div class="card" *ngFor="let tweet of tweets; let i = index">-->
+    <!--<app-tweet [tweet]="tweet"></app-tweet>-->
+  <!--</div>-->
+  <div *ngFor="let article of news; let i = index">
+    <app-article [article]="article"></app-article>
+  </div>
+</div>

@@ -1,23 +1,30 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Tweet } from '../tweet';
 import { ContentService } from '../content.service';
+import {Article} from '../article';
 
 @Component({
-  selector: 'app-tweets',
-  templateUrl: './tweets.component.html',
-  styleUrls: ['./tweets.component.scss']
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.scss']
 })
-export class TweetsComponent implements OnInit, OnDestroy {
+export class ContentComponent implements OnInit, OnDestroy {
   tweets: Tweet[] = [];
+  news: Article[] = [];
   @Input() username: string;
+  @Input() keyword: string;
   count = 25;
   timer;
 
   constructor(private api: ContentService) {}
 
   ngOnInit() {
-    this.getTweets();
-    this.timer = setInterval(() => this.getTweets(), 61000);
+    // this.getTweets();
+    this.getNews();
+    this.timer = setInterval(() => {
+      this.getTweets();
+      this.getNews();
+    }, 61000);
   }
 
   ngOnDestroy() {
@@ -32,4 +39,9 @@ export class TweetsComponent implements OnInit, OnDestroy {
     });
   }
 
+  getNews() {
+    this.api.news(this.keyword, this.count).subscribe(news => {
+      this.news = news;
+    });
+  }
 }

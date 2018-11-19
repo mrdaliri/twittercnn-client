@@ -2,18 +2,36 @@
   <clr-header class="header-6">
     <div class="branding">
       <a class="nav-link">
-        <clr-icon shape="vm-bug"></clr-icon>
-        <span class="title">TrumpCNN</span>
+        <clr-icon shape="bubble-exclamation" class="is-solid"></clr-icon>
+        <span class="title">TWITTER vs CNN</span>
       </a>
     </div>
-    <form class="search">
-      <label for="search_input">
-        <input id="search_input" type="text" placeholder="Search for keywords...">
-      </label>
-    </form>
+    <div class="header-actions">
+      <a href="https://github.com/mrdaliri" class="nav-link nav-text">
+        Made with <clr-icon shape="heart" class="is-solid"></clr-icon> by Mohammad-Reza
+      </a>
+    </div>
   </clr-header>
   <div class="content-container">
     <main class="content-area">
+      <div class="clr-col-md-8 clr-offset-md-2">
+        <form clrForm>
+          <div class="clr-row clr-justify-content-around">
+            <div class="clr-col-4">
+              <clr-input-container class="float-md-left">
+                <label>Twitter Username</label>
+                <input clrInput type="text" name="username" [(ngModel)]="username" />
+              </clr-input-container>
+            </div>
+            <div class="clr-col-4">
+              <clr-input-container class="float-md-right">
+                <label>CNN Keyword</label>
+                <input clrInput type="text" name="keyword" [(ngModel)]="keyword" />
+              </clr-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
       <app-content [username]="this.username" [keyword]="this.keyword"></app-content>
     </main>
   </div>

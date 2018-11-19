@@ -1,6 +1,8 @@
 
 <div class="card-header">
-  Donald J. Trump said:
+  Donald J. Trump
+  <span *ngIf="retweet">retweeted</span>
+  <span *ngIf="!retweet">said</span>:
 </div>
 <div class="card-img" *ngIf="hasPhoto(tweet)">
   <img [src]="tweet.entities?.media[0].media_url_https" (click)="media = true" />
@@ -9,7 +11,10 @@
   <div class="card-media-block">
     <img src="http://localhost:9001/2.png" class="card-media-image">
   </div>
-  <p class="card-text" [innerHTML]="tweet | tweet"></p>
+  <div class="card-content">
+    <p class="card-text" [innerHTML]="tweet | tweet"></p>
+    <blockquote [innerHTML]="tweet | tweet"></blockquote>
+  </div>
 </div>
 <div class="card-footer" *ngIf="!retweet">
     {{tweet.created_at | amTimeAgo}}

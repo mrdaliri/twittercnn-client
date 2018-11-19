@@ -5,6 +5,14 @@
   }
 }
 
+.card-header .card-header-meta {
+  float: right;
+
+  clr-icon {
+    margin-right: 3px;
+  }
+}
+
 .card-block {
   display: grid;
   grid-template-columns: 5rem 1fr;

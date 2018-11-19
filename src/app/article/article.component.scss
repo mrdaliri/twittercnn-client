@@ -41,15 +41,6 @@
   grid-area: text;
 }
 
-::ng-deep {
-  .modal-body {
-    text-align: center;
-    img {
-      max-width: 100%;
-    }
-  }
-  .modal-footer {
-    padding: 0;
-    text-align: left;
-  }
+.card-footer-actions {
+  float: right;
 }

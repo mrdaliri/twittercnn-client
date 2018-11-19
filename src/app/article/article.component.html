@@ -1,4 +1,4 @@
-<div class="card clickable" (click)="toggleView()">
+<div class="card">
   <div class="card-header">
     <h3>{{ article.headline }}</h3>
   </div>
@@ -15,5 +15,10 @@
     {{ article.lastModifiedDate | amLocal | amTimeAgo }}
     <clr-icon shape="minus"></clr-icon>
     {{ article.lastModifiedDate | amLocal | date:'medium' }}
+
+    <div class="card-footer-actions">
+      <button (click)="toggleView()" class="btn btn-sm btn-success">Read More</button>
+      <a [href]="article.url" target="_blank" class="btn btn-sm btn-link">View on CNN.com</a>
+    </div>
   </div>
 </div>

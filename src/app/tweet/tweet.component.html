@@ -1,11 +1,16 @@
 <div class="card">
   <div class="card-header">
-    Donald J. Trump
+    {{ tweet.user.name }}
     <span *ngIf="tweet.retweeted_status">retweeted</span>
     <span *ngIf="!tweet.retweeted_status">said</span>:
+
+    <div class="card-header-meta">
+      <span class="label label-danger"><clr-icon shape="heart"></clr-icon> {{ tweet.favorite_count }}</span>
+      <span class="label label-info"><clr-icon shape="share"></clr-icon> {{ tweet.retweet_count }}</span>
+    </div>
   </div>
   <div class="card-img" *ngIf="hasPhoto(tweet)">
-    <img [src]="tweet.entities?.media[0].media_url_https" (click)="media = true"/>
+    <img [src]="tweet.entities?.media[0].media_url_https" />
   </div>
   <div class="card-block">
     <div class="card-media-block wrap">
@@ -17,14 +22,9 @@
       <blockquote *ngIf="tweet.quoted_status" [innerHTML]="tweet.quoted_status | tweet"></blockquote>
     </div>
   </div>
-  <div class="card-footer" *ngIf="!retweet">
-    {{tweet.created_at | amLocal | amTimeAgo}}
+  <div class="card-footer">
+    {{ tweet.created_at | amLocal | amTimeAgo }}
     <clr-icon shape="minus"></clr-icon>
-    {{tweet.created_at | amLocal | date:'medium'}}
-  </div>
-  <div class="card-footer" *ngIf="retweet">
-    {{retweet.created_at | amLocal | amTimeAgo}}
-    <clr-icon shape="minus"></clr-icon>
-    {{retweet.created_at | amLocal | date:'medium'}}
+    {{ tweet.created_at | amLocal | date:'medium' }}
   </div>
 </div>

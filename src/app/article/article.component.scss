@@ -1,0 +1,46 @@
+.card-img {
+  img {
+    max-height: 250px;
+    object-fit: cover;
+  }
+}
+
+.card-header {
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.card-block {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'thumbnail text';
+}
+
+.card-media-block {
+  grid-area: thumbnail;
+  margin-bottom: 0;
+  padding-right: 10px;
+  padding-top: 5px;
+
+  .card-media-image {
+    max-height: none;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+  }
+
+  .card-media-title {
+    margin-top: 0.1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.card-text {
+  grid-area: text;
+}
+
+.card-footer-actions {
+  float: right;
+}

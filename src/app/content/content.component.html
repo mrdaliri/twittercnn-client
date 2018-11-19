@@ -1,0 +1,6 @@
+<div class="tweets clr-col-md-8 clr-offset-2">
+  <div *ngFor="let c of content; let i = index">
+    <app-tweet [tweet]="c" *ngIf="isTweet(c)"></app-tweet>
+    <app-article [article]="c" *ngIf="!isTweet(c)"></app-article>
+  </div>
+</div>

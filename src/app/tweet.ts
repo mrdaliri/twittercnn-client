@@ -67,4 +67,5 @@ export class Tweet {
   is_quote_status: boolean;
   quoted_status: Tweet;
   tones: Tone[];
+  datetime: number;
 }

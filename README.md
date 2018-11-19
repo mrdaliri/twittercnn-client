@@ -2,7 +2,7 @@
 
 It is an Angular client for [TwitterCNN API](https://github.com/mrdaliri/twittercnn-api). It shows tweets and news in one page. The users can customize Twitter username and CNN search keyword(s).
 
-All the requests to the API are done asynchronously.
+All the requests to the API are done asynchronously. The fetched data updated every minute automatically.
 # Technologies
 
  - Angular

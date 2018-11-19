@@ -1,27 +1,25 @@
-# TwitterCNN Client
+# TwitterCNN: Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+It is an Angular client for [TwitterCNN API](https://github.com/mrdaliri/twittercnn-api). It shows tweets and news in one page. The users can customize Twitter username and CNN search keyword(s).
 
-## Development server
+All the requests to the API are done asynchronously.
+# Technologies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ - Angular
+ - TypeScript
+ - Observable
+ - Clarity Design System
+ 
+# Development & Deployment
+You need to install **AngularCLI**, then install other required packages by running `npm install` command. Finally execute `ng serve --open` to launch the application.
 
-## Code scaffolding
+# Credits
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Made with ❤️ by Mohammad-Reza Daliri (https://github.com/mrdaliri).
 
-## Build
+Following libraries/products are used:
+- Angular v7.0.0: https://angular.io
+ - Clarity Design System: https://vmware.github.io/clarity/
+- The twitter-angular-client repository: https://github.com/sitepoint-editors/twitter-angular-client
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Published under MIT License.
